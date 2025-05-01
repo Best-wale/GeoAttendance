@@ -1,0 +1,28 @@
+.loading {
+                position: relative;
+            }
+
+            .loading:after {
+                content: "";
+                position: absolute;
+                width: 1.2em;
+                height: 1.2em;
+                border: 2px solid #ffffff;
+                border-radius: 50%;
+                border-top-color: transparent;
+                animation: spin 1s linear infinite;
+                right: -1.5em;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            @keyframes spin {
+                to {
+                    transform: translateY(-50%) rotate(360deg);
+                }
+            }
+
+            .dark .loading:after {
+                border-color: #5D5CDE;
+                border-top-color: transparent;
+            }

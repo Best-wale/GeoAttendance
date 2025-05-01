@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GeoAttendance</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="plugin.js"></script>
+        <link rel="stylesheet" href="main.css">
+        
+    </head>
+
+    <body class="min-h-screen bg-white dark:bg-gray-900 dark:text-white transition-colors duration-200">
+        <div class="container mx-auto px-4 py-8 max-w-4xl">
+            <header class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-primary mb-2">GeoAttendance</h1>
+                <p class="text-gray-600 dark:text-gray-300">Location-based Attendance System</p>
+            </header>
+
+            <!-- Login Section -->
+            <div id="login-section" class="mb-8">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                    <h2 class="text-xl font-bold mb-4">Login</h2>
+                    <div class="mb-4">
+                        <label for="user-id" class="block mb-2 text-sm font-medium">User ID</label>
+                        <input type="text" id="user-id"
+                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md text-black dark:text-white dark:bg-gray-700 text-base"
+                            placeholder="Enter your ID">
+                    </div>
+                    <div class="mb-4">
+                        <label for="user-role" class="block mb-2 text-sm font-medium">Role</label>
+                        <select id="user-role"
+                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md text-black dark:text-white dark:bg-gray-700 text-base">
+                            <option value="student">Student</option>
+                            <option value="admin">Teacher/Admin</option>
+                        </select>
+                    </div>
+                    <button id="login-btn"
+                        class="w-full bg-primary text-white py-3 px-4 rounded-md hover:bg-opacity-90 transition-all">Login</button>
+                </div>
+            </div>
+
+            <!-- Admin Panel -->
+            <div id="admin-panel" class="mb-8 hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+                    <h2 class="text-xl font-bold mb-4">Lecture Room Setup</h2>
+                    <div class="mb-4">
+                        <label for="room-name" class="block mb-2 text-sm font-medium">Room Name</label>
+                        <input type="text" id="room-name"
+                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md text-black dark:text-white dark:bg-gray-700 text-base"
+                            placeholder="e.g., Room 101">
+                    </div>
+                    <div class="mb-4">
+                        <label for="course-name" class="block mb-2 text-sm font-medium">Course Name</label>
+                        <input type="text" id="course-name"
+                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md text-black dark:text-white dark:bg-gray-700 text-base"
+                            placeholder="e.g., Mathematics 101">
+                    </div>
+                    <div class="mb-4">
+                        <p class="mb-2 text-sm font-medium">Current Location Coordinates</p>
+                        <p id="admin-coordinates" class="p-3 bg-gray-100 dark:bg-gray-700 rounded-md">Waiting for
+                            location...</p>
+                    </div>
+                    <div class="mb-4">
+                        <label for="radius" class="block mb-2 text-sm font-medium">Allowable Radius (meters)</label>
+                        <input type="number" id="radius"
+                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md text-black dark:text-white dark:bg-gray-700 text-base"
+                            value="50" min="10" max="200">
+                    </div>
+                    <button id="set-location-btn"
+                        class="w-full bg-primary text-white py-3 px-4 rounded-md hover:bg-opacity-90 transition-all">Set
+                        Current Location as Lecture Room</button>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                    <h2 class="text-xl font-bold mb-4">Attendance Records</h2>
+                    <div id="admin-attendance-list" class="space-y-2">
+                        <p class="text-gray-500 dark:text-gray-400 italic">No attendance records yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Panel -->
+            <div id="student-panel" class="mb-8 hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+                    <h2 class="text-xl font-bold mb-4">Available Classes</h2>
+                    <div id="available-classes" class="space-y-4">
+                        <p class="text-gray-500 dark:text-gray-400 italic">No classes available</p>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                    <h2 class="text-xl font-bold mb-4">Your Attendance</h2>
+                    <div id="student-attendance-list" class="space-y-2">
+                        <p class="text-gray-500 dark:text-gray-400 italic">No attendance records yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Messages -->
+            <div id="status-message" class="hidden mb-8 p-4 rounded-md text-center"></div>
+
+            <!-- Logout Button -->
+            <div id="logout-container" class="text-center hidden">
+                <button id="logout-btn"
+                    class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-all">Logout</button>
+            </div>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+
+</html>
